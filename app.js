@@ -169,6 +169,40 @@ document.fonts?.ready.then(() => { layoutRail(); frame(); });
 layoutRail();
 frame();
 
+// ---------- Contact form ----------
+// Sent through FormSubmit (no backend on GitHub Pages). Without JavaScript the
+// form still posts to FormSubmit's normal endpoint.
+const form = document.getElementById("contact-form");
+if (form) {
+  const status = document.getElementById("form-status");
+  const button = form.querySelector("button");
+  const setStatus = (text, kind) => { status.textContent = text; status.className = "form-status" + (kind ? " " + kind : ""); };
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fields = [...form.querySelectorAll("input[required], textarea[required]")];
+    fields.forEach((f) => f.classList.toggle("bad", !f.value.trim() || (f.type === "email" && !f.checkValidity())));
+    if (form.querySelector(".bad")) { setStatus("Merci de remplir les trois champs (avec un email valide).", "err"); return; }
+    if (form._honey.value) return; // filled only by bots
+    button.disabled = true;
+    setStatus("Envoi en cours…");
+    try {
+      const res = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) === "false") throw new Error(data.message || res.statusText);
+      form.reset();
+      setStatus("Merci, votre message est bien parti. Je vous réponds rapidement.", "ok");
+    } catch (err) {
+      setStatus("L'envoi n'a pas abouti. Écrivez-moi directement à gheroufellafaycal@gmail.com.", "err");
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
 // ---------- Clock & year ----------
 const clock = document.getElementById("clock");
 if (clock) {

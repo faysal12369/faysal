@@ -242,7 +242,28 @@
 <section class="contact" id="contact">
   <p class="kicker">( Contact )</p>
   <h2 class="big-cta">Un poste de<br>développeur&nbsp;?</h2>
-  <a class="mail" href="mailto:gheroufellafaycal@gmail.com"><span>gheroufellafaycal@gmail.com</span></a>
+
+  <div class="contact-grid">
+    <div class="direct">
+      <a class="mail" href="mailto:gheroufellafaycal@gmail.com"><span>gheroufellafaycal@gmail.com</span></a>
+      <a class="tel" href="tel:+213542995981">+213 542 99 59 81</a>
+      <a class="wa" href="https://wa.me/213542995981" target="_blank" rel="noopener">Écrire sur WhatsApp ↗</a>
+    </div>
+
+    <form class="form" id="contact-form" action="https://formsubmit.co/gheroufellafaycal@gmail.com" method="POST" novalidate>
+      <p class="form-title">Ou laissez-moi un message</p>
+      <label><span>Nom</span><input name="nom" autocomplete="name" required maxlength="120"></label>
+      <label><span>Email</span><input name="email" type="email" autocomplete="email" required maxlength="160"></label>
+      <label><span>Message</span><textarea name="message" rows="5" required maxlength="4000"></textarea></label>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="_subject" value="Portfolio — nouveau message">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit">Envoyer le message</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+
   <div class="links">
     <a href="cv/CV_Faycal_Gheroufella_FR.pdf">CV français</a>
     <a href="cv/CV_Faycal_Gheroufella_EN.pdf">CV English</a>
