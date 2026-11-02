@@ -52,7 +52,7 @@
 <!-- MANIFESTO: words light up while scrolling -->
 <section class="manifesto" id="intro">
   <p class="kicker">( À propos )</p>
-  <p class="words" data-words>Je développe les outils qui font tourner une entreprise : l'encaissement des coursiers, l'étiquetage des produits, le stock, les tableaux de bord de la direction. Depuis mai 2024 chez SINAL, j'ai livré plus de quinze applications, du web en PHP aux applications Android et Windows en Flutter. Avant le code, j'ai fait un master en audit et comptabilité — je sais ce qu'un chiffre doit dire avant d'écrire la requête qui le produit.</p>
+  <p class="words" data-words>Je développe les outils qui font tourner une entreprise : l'encaissement des coursiers, l'étiquetage des produits, le stock, les tableaux de bord de la direction. Depuis mai 2024 chez SINAL, j'ai livré plus de quinze applications, du web en PHP aux applications Android et Windows en Flutter, et je suis le principal contributeur des deux ERP de l'entreprise. Avant le code, j'ai fait un master en audit et comptabilité — je sais ce qu'un chiffre doit dire avant d'écrire la requête qui le produit.</p>
 </section>
 
 <!-- MARQUEE -->
@@ -68,13 +68,50 @@
   <div class="pin">
     <div class="hs-head">
       <h2>Projets choisis</h2>
-      <p class="hs-count"><b id="hs-index">01</b> / 04</p>
+      <p class="hs-count"><b id="hs-index">01</b> / 06</p>
     </div>
     <div class="track">
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">01</p>
+          <p class="card-num">01 <span class="team">Projet d'équipe · contributeur principal</span></p>
+          <h3>ERP DS</h3>
+          <p class="card-lead">L'ERP des marchés publics, des achats et de la logistique : appels d'offres, soumissions, lots, contrats et cautions, études du bureau d'études, commandes, conteneurs, livraisons et paiements partiels — avec le stock et un drive documentaire.</p>
+          <ul class="tags"><li>PHP 8</li><li>MariaDB</li><li>Docker</li><li>n8n</li><li>OCR Tesseract</li></ul>
+          <dl class="stats"><div><dt>Tables</dt><dd>145</dd></div><div><dt>Rôles</dt><dd>18</dd></div><div><dt>Permissions</dt><dd>~165</dd></div></dl>
+          <a class="card-link" href="https://github.com/faysal12369/erp-ds">Voir la fiche ↗</a>
+        </div>
+        <div class="card-visual">
+          <ol class="pipeline">
+            <li>Appel d'offres</li><li>Étude de faisabilité</li><li>Soumission</li><li>Lot attribué</li><li>Contrat &amp; caution</li>
+            <li>Commande fournisseur</li><li>Conteneur</li><li>Réception en stock</li><li>Livraison</li><li>Paiement</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">02 <span class="team">Projet d'équipe · contributeur principal</span></p>
+          <h3>ERP DG</h3>
+          <p class="card-lead">L'ERP des Moyens Généraux : demandes d'achat validées jusqu'au PDG, bons de commande, stock avec carte 3D des emplacements, trésorerie, patrimoine, missions, parc auto, RH, GED versionnée, qualité et tickets IT. Les anciennes bases HFSQL y sont importées.</p>
+          <ul class="tags"><li>PHP</li><li>MySQL</li><li>n8n</li><li>ODBC / HFSQL</li><li>Chart.js</li></ul>
+          <dl class="stats"><div><dt>Tables</dt><dd>~120</dd></div><div><dt>Points d'API</dt><dd>~150</dd></div></dl>
+          <a class="card-link" href="https://github.com/faysal12369/erp-dg">Voir la fiche ↗</a>
+        </div>
+        <div class="card-visual">
+          <ol class="approval">
+            <li><b>Demande d'achat</b><span>Service</span></li>
+            <li><b>Ordonnateur</b><span>Validé</span></li>
+            <li><b>DAG</b><span>Validé</span></li>
+            <li><b>PDG</b><span>Validé</span></li>
+            <li><b>Bon de commande</b><span>Émis</span></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">03</p>
           <h3>SinalGo</h3>
           <p class="card-lead">L'application du coursier au moment de la livraison : il scanne le bon avec le lecteur Honeywell, l'application vérifie qu'il n'est pas déjà réglé, puis enregistre le paiement, la signature du client et la position GPS.</p>
           <ul class="tags"><li>Flutter</li><li>WinDev Mobile</li><li>PHP</li><li>SDK Honeywell</li></ul>
@@ -100,7 +137,7 @@
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">02</p>
+          <p class="card-num">04</p>
           <h3>Étiquettes TSPL</h3>
           <p class="card-lead">Une application Windows qui dessine l'étiquette en image 1-bit à 203 dpi, la traduit en commandes TSPL et l'envoie directement au spouleur via <code>winspool.dll</code>, appelé depuis Dart. Marquage CE, IMEI et numéro de série en Code128.</p>
           <ul class="tags"><li>Flutter Desktop</li><li>dart:ffi</li><li>TSPL</li><li>Code128</li></ul>
@@ -123,7 +160,7 @@
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">03</p>
+          <p class="card-num">05</p>
           <h3>ERP en Flutter Web</h3>
           <p class="card-lead">Le front-end de l'ERP de l'entreprise : 22 modules, des appels d'offres au drive partagé. Étiquettes et QR codes d'emplacement pour le stock, et l'architecture d'un assistant IA — n8n et Google Gemini, limité aux droits de l'utilisateur.</p>
           <ul class="tags"><li>Flutter Web</li><li>Riverpod</li><li>go_router</li><li>dio</li></ul>
@@ -137,7 +174,7 @@
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">04</p>
+          <p class="card-num">06</p>
           <h3>TB Sinal</h3>
           <p class="card-lead">Le tableau de bord de la direction : ventes, encaissements et créances par commercial, agence, client et famille de produits. Le projet où la formation en finance compte le plus — une créance n'est pas un encaissement.</p>
           <ul class="tags"><li>Flutter BLoC</li><li>PHP</li><li>MySQL</li><li>Google Maps</li></ul>
@@ -164,9 +201,9 @@
 <!-- NUMBERS -->
 <section class="numbers">
   <div><b data-count="15" data-suffix="+">0</b><span>applications livrées</span></div>
-  <div><b data-count="3">0</b><span>plateformes : Android, Windows, Web</span></div>
+  <div><b data-count="2">0</b><span>ERP web, contributeur principal en équipe</span></div>
   <div><b data-count="79">0</b><span>actions dans l'API de TB Sinal</span></div>
-  <div><b data-count="22">0</b><span>modules dans l'ERP Flutter Web</span></div>
+  <div><b data-count="145">0</b><span>tables dans l'ERP DS</span></div>
 </section>
 
 <!-- OTHER WORK -->
@@ -186,7 +223,7 @@
     <li><span class="l-name">Ordres de mission</span><span class="l-desc">Version web et application Windows</span><span class="l-tech">PHP · Flutter</span></li>
     <li><span class="l-name">Système RH</span><span class="l-desc">Dossiers employés, cartes professionnelles</span><span class="l-tech">PHP</span></li>
   </ul>
-  <p class="aside">En équipe : contributions aux deux ERP web de l'entreprise, à SINAL Cartes (cartes de remise avec QR codes révocables) et à la nouvelle version des réclamations.</p>
+  <p class="aside">En équipe, j'ai aussi contribué à SINAL Cartes (cartes de remise avec QR codes révocables) et à la nouvelle version des réclamations.</p>
 </section>
 
 <!-- TIMELINE -->

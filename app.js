@@ -81,9 +81,18 @@ function layoutRail() {
     track.style.transform = "";
   }
 }
+// The counter shows the card closest to the middle of the screen.
 function setRailProgress(p) {
   if (bar) bar.style.transform = `scaleX(${p})`;
-  if (idx) idx.textContent = String(Math.min(cards, Math.floor(p * cards * 0.999) + 1)).padStart(2, "0");
+  if (!idx) return;
+  const mid = window.innerWidth / 2;
+  let best = 0, bestDist = Infinity;
+  [...track.children].forEach((card, i) => {
+    const r = card.getBoundingClientRect();
+    const dist = Math.abs(r.left + r.width / 2 - mid);
+    if (dist < bestDist) { bestDist = dist; best = i; }
+  });
+  idx.textContent = String(best + 1).padStart(2, "0");
 }
 track?.addEventListener("scroll", () => {
   if (pinned) return;

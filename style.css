@@ -182,6 +182,62 @@ code { font-family: var(--mono); font-size: .85em; }
 .hs-progress { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 40px; height: 2px; background: var(--line); }
 .hs-progress span { position: absolute; inset: 0; background: var(--accent); transform-origin: left; transform: scaleX(0); }
 
+/* Card label for team projects */
+.team { margin-left: 10px; padding: 3px 9px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); font-weight: 400; font-size: 11px; }
+
+/* Visual: tender pipeline (ERP DS) */
+.pipeline { list-style: none; margin: 0; padding: 0; width: min(330px, 84%); counter-reset: st; }
+.pipeline li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 14px;
+  color: var(--muted);
+  counter-increment: st;
+  animation: stage 9s infinite;
+  animation-delay: calc((var(--n) - 1) * .7s);
+}
+.pipeline li::before {
+  content: counter(st, decimal-leading-zero);
+  flex: none;
+  width: 34px;
+  font: 500 11px var(--mono);
+  text-align: center;
+  padding: 3px 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.pipeline li:nth-child(1) { --n: 1; } .pipeline li:nth-child(2) { --n: 2; } .pipeline li:nth-child(3) { --n: 3; } .pipeline li:nth-child(4) { --n: 4; } .pipeline li:nth-child(5) { --n: 5; }
+.pipeline li:nth-child(6) { --n: 6; } .pipeline li:nth-child(7) { --n: 7; } .pipeline li:nth-child(8) { --n: 8; } .pipeline li:nth-child(9) { --n: 9; } .pipeline li:nth-child(10) { --n: 10; }
+@keyframes stage { 0%, 2% { color: var(--muted); } 5%, 78% { color: var(--text); } 90%, 100% { color: var(--muted); } }
+.pipeline li::before { animation: stageNum 9s infinite; animation-delay: inherit; }
+@keyframes stageNum { 0%, 2% { background: transparent; color: var(--muted); border-color: var(--line); } 5%, 78% { background: var(--accent); color: var(--on-accent); border-color: var(--accent); } 90%, 100% { background: transparent; color: var(--muted); border-color: var(--line); } }
+
+/* Visual: purchase approval chain (ERP DG) */
+.approval { list-style: none; margin: 0; padding: 0; width: min(330px, 84%); }
+.approval li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px 14px 46px;
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg2);
+  animation: approve 7s infinite;
+  animation-delay: calc(var(--n) * .9s);
+}
+.approval li:not(:last-child)::after { content: ""; position: absolute; left: 25px; bottom: -15px; width: 2px; height: 14px; background: var(--line); }
+.approval li::before { content: ""; position: absolute; left: 16px; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; border: 2px solid var(--line); animation: tick 7s infinite; animation-delay: inherit; }
+.approval b { font-weight: 600; font-size: 15px; }
+.approval span { font: 400 11px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.approval li:nth-child(1) { --n: 0; } .approval li:nth-child(2) { --n: 1; } .approval li:nth-child(3) { --n: 2; } .approval li:nth-child(4) { --n: 3; } .approval li:nth-child(5) { --n: 4; }
+@keyframes approve { 0%, 3% { border-color: var(--line); } 7%, 80% { border-color: var(--accent); } 92%, 100% { border-color: var(--line); } }
+@keyframes tick { 0%, 3% { background: transparent; border-color: var(--line); } 7%, 80% { background: var(--accent); border-color: var(--accent); } 92%, 100% { background: transparent; border-color: var(--line); } }
+
 /* Visual: phone (SinalGo) */
 .phone { width: 230px; height: 440px; border: 9px solid #26262a; border-radius: 38px; background: #0d0d0e; padding: 30px 16px 16px; box-shadow: 0 40px 80px -40px #000; }
 .ph-title { margin: 0 0 14px; font-weight: 700; font-size: 18px; }
@@ -297,12 +353,19 @@ code { font-family: var(--mono); font-size: .85em; }
   .card { flex-basis: 86vw; height: auto; grid-template-columns: 1fr; scroll-snap-align: center; }
   .card-visual { order: -1; height: 230px; border-left: 0; border-bottom: 1px solid var(--line); }
   /* The phone rises from the bottom edge of the visual instead of shrinking. */
-  .card:first-child .card-visual { place-items: start center; }
+  .card-visual:has(.phone) { place-items: start center; }
   .phone { margin-top: 26px; transform: none; }
   .feed { transform: scale(.82); }
   .modules { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
   .mod { padding: 4px 7px; font-size: 10px; }
   .kpis li { padding: 6px 0; font-size: 12.5px; }
+  .pipeline { columns: 2; column-gap: 14px; }
+  .pipeline li { padding: 4px 0; font-size: 12px; break-inside: avoid; }
+  .approval li { padding: 6px 12px 6px 44px; margin-bottom: 6px; }
+  .approval li::before { left: 14px; width: 14px; height: 14px; margin-top: -7px; }
+  .approval li:not(:last-child)::after { display: none; }
+  .approval b { font-size: 13px; }
+  .team { display: block; margin: 8px 0 0; width: max-content; }
   .card-text { padding: 22px 20px 24px; }
   .card h3 { margin: 10px 0 12px; }
   .stats { padding-top: 18px; }
@@ -317,7 +380,7 @@ code { font-family: var(--mono); font-size: .85em; }
 @media (prefers-reduced-motion: reduce) {
   .curtain { display: none; }
   .char > span, .role, .badge { animation: none; transform: none; opacity: 1; }
-  .badge svg, .marquee-track, .ph-laser, .ph-steps li, .feed-label, .mod, .kpis i, .dot { animation: none; }
+  .badge svg, .marquee-track, .ph-laser, .ph-steps li, .feed-label, .mod, .kpis i, .dot, .pipeline li, .pipeline li::before, .approval li, .approval li::before { animation: none; }
   .feed-label { clip-path: none; }
   .w { color: var(--text); }
   .rise { opacity: 1; transform: none; }
