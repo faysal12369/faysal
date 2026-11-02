@@ -1,10 +1,12 @@
-// Portfolio v2: real Code128 barcodes, a thermal printer that prints the
-// business card, labels scanned by a laser as they scroll into view, and a few
-// count-ups. Everything degrades to the final state with reduced motion.
+// Portfolio v3: split-letter hero, words that light up while scrolling, a pinned
+// horizontal project rail, counters and a timeline that draws itself.
+// Narrow screens get a native swipe rail; reduced motion gets the final state.
 
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const WIDE = window.matchMedia("(min-width: 901px)");
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
-// ---------- Code128-B ----------
+// ---------- Code128-B (real, scannable barcodes) ----------
 const CODE128 = (
   "212222 222122 222221 121223 121322 131222 122213 122312 132212 221213 " +
   "221312 231212 112232 122132 122231 113222 123122 123221 223211 221132 " +
@@ -18,137 +20,153 @@ const CODE128 = (
   "214121 412121 111143 111341 131141 114113 114311 411113 411311 113141 " +
   "114131 311141 411131 211412 211214 211232 2331112"
 ).split(" ");
-
 function code128B(text) {
-  const values = [104];
-  for (const ch of text) {
-    const c = ch.charCodeAt(0);
-    if (c >= 32 && c <= 126) values.push(c - 32);
-  }
+  const v = [104];
+  for (const ch of text) { const c = ch.charCodeAt(0); if (c >= 32 && c <= 126) v.push(c - 32); }
   let sum = 104;
-  for (let i = 1; i < values.length; i++) sum += values[i] * i;
-  values.push(sum % 103, 106);
-  return values.map((v) => CODE128[v]).join("");
+  for (let i = 1; i < v.length; i++) sum += v[i] * i;
+  v.push(sum % 103, 106);
+  return v.map((x) => CODE128[x]).join("");
 }
-
-// Draws bars into an SVG whose viewBox width is stretched to the module count,
-// so any code fills the element's width.
-function drawBarcode(svg) {
-  const widths = code128B(svg.dataset.code || "");
-  const total = [...widths].reduce((a, w) => a + Number(w), 0);
-  const height = svg.viewBox.baseVal.height || 54;
-  svg.setAttribute("viewBox", `0 0 ${total} ${height}`);
-  let x = 0;
-  let d = "";
-  let bar = true;
-  for (const w of widths) {
-    const n = Number(w);
-    if (bar) d += `M${x} 0h${n}v${height}h${-n}z`;
-    x += n;
-    bar = !bar;
-  }
+document.querySelectorAll("svg[data-code]").forEach((svg) => {
+  const widths = code128B(svg.dataset.code);
+  const h = svg.viewBox.baseVal.height || 40;
+  let x = 0, d = "", bar = true;
+  for (const w of widths) { const n = +w; if (bar) d += `M${x} 0h${n}v${h}h${-n}z`; x += n; bar = !bar; }
+  svg.setAttribute("viewBox", `0 0 ${x} ${h}`);
   svg.innerHTML = `<path d="${d}" fill="currentColor"/>`;
-}
-document.querySelectorAll("svg[data-code]").forEach(drawBarcode);
+});
 
-// ---------- Printer ----------
-// Printing starts when the printer comes into view (below the title on phones).
-const paper = document.getElementById("paper");
-const printer = document.querySelector(".printer");
-function startPrint() {
-  if (!paper) return;
-  if (REDUCED) { paper.classList.add("torn"); return; }
-  printer.classList.add("printing");
-  paper.classList.add("feed");
-  paper.addEventListener("animationend", (e) => {
-    if (e.animationName !== "feed") return;
-    printer.classList.remove("printing");
-    paper.classList.remove("feed");
-    paper.classList.add("torn");
-  });
-}
+// The curtain lifts with CSS; remove it anyway in case animations are paused
+// (background tab, power saving) so it can never hide the page.
+const curtain = document.querySelector(".curtain");
+if (curtain) setTimeout(() => curtain.remove(), 1400);
 
-// ---------- Warehouse bins (ERP modules) ----------
-const MODULES = [
-  "Projets", "Appels d'offres", "Lots de prix", "Achats", "Commandes", "Clients",
-  "Fournisseurs", "Stock", "Équipements", "Services", "Interventions", "Réunions",
-  "Revues", "Drive", "Messagerie", "Notifications", "Déclarations", "Journal d'audit",
-  "Rapports", "Utilisateurs", "Paramètres", "Assistant",
-];
-const bins = document.querySelector(".bins");
-if (bins) {
-  bins.innerHTML = MODULES.map((m, i) => {
-    const aisle = String.fromCharCode(65 + Math.floor(i / 6));
-    const slot = String((i % 6) + 1).padStart(2, "0");
-    return `<div class="bin" style="--i:${i}"><small>${aisle}-${slot}<i></i></small><span>${m}</span></div>`;
-  }).join("");
+// ---------- Hero letters ----------
+let c = 0;
+document.querySelectorAll("[data-split]").forEach((row) => {
+  row.setAttribute("aria-hidden", "true");
+  row.innerHTML = [...row.textContent].map((ch) => `<span class="char"><span style="--c:${c++}">${ch}</span></span>`).join("");
+});
+
+// ---------- Manifesto words ----------
+const wordsEl = document.querySelector("[data-words]");
+let words = [];
+if (wordsEl) {
+  wordsEl.innerHTML = wordsEl.textContent.trim().split(/\s+/).map((w) => `<span class="w">${w}</span>`).join(" ");
+  words = [...wordsEl.querySelectorAll(".w")];
 }
 
-// ---------- Count-ups ----------
+// ---------- ERP modules ----------
+const MODULES = ["Projets", "Appels d'offres", "Lots de prix", "Achats", "Commandes", "Clients", "Fournisseurs", "Stock", "Équipements", "Services", "Interventions", "Réunions", "Revues", "Drive", "Messagerie", "Notifications", "Déclarations", "Journal", "Rapports", "Utilisateurs", "Paramètres", "Assistant"];
+const modules = document.getElementById("modules");
+if (modules) modules.innerHTML = MODULES.map((m, i) => `<span class="mod" style="--i:${i}">${m}</span>`).join("");
+
+// ---------- Horizontal rail ----------
+const hs = document.querySelector(".hscroll");
+const track = hs?.querySelector(".track");
+const bar = document.getElementById("hs-bar");
+const idx = document.getElementById("hs-index");
+const cards = track ? track.children.length : 0;
+let pinned = false;
+
+function layoutRail() {
+  pinned = WIDE.matches && !REDUCED;
+  if (!hs) return;
+  if (pinned) {
+    const distance = track.scrollWidth - window.innerWidth;
+    hs.style.height = `${distance + window.innerHeight}px`;
+  } else {
+    hs.style.height = "";
+    track.style.transform = "";
+  }
+}
+function setRailProgress(p) {
+  if (bar) bar.style.transform = `scaleX(${p})`;
+  if (idx) idx.textContent = String(Math.min(cards, Math.floor(p * cards * 0.999) + 1)).padStart(2, "0");
+}
+track?.addEventListener("scroll", () => {
+  if (pinned) return;
+  const max = track.scrollWidth - track.clientWidth;
+  setRailProgress(max > 0 ? track.scrollLeft / max : 0);
+}, { passive: true });
+
+// ---------- Counters ----------
 const fmt = new Intl.NumberFormat("fr-FR");
 function countUp(el) {
-  const target = Number(el.dataset.count);
-  if (REDUCED) { el.textContent = fmt.format(target); return; }
-  const start = performance.now();
-  const dur = 1400;
+  const target = +el.dataset.count, suffix = el.dataset.suffix || "";
+  if (REDUCED) { el.textContent = fmt.format(target) + suffix; return; }
+  const t0 = performance.now();
   const tick = (now) => {
-    const t = Math.min(1, (now - start) / dur);
-    const eased = 1 - Math.pow(1 - t, 4);
-    el.textContent = fmt.format(Math.round(target * eased));
+    const t = clamp((now - t0) / 1600);
+    el.textContent = fmt.format(Math.round(target * (1 - Math.pow(1 - t, 4)))) + suffix;
     if (t < 1) requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
 }
 
-// ---------- Scan a label: laser sweeps, then the stamp lands ----------
-function scan(label) {
-  if (REDUCED) { label.classList.add("scanned"); return; }
-  label.classList.add("scanning");
-  setTimeout(() => {
-    label.classList.remove("scanning");
-    label.classList.add("scanned");
-  }, 1700);
-}
+// ---------- Generic reveal ----------
+document.querySelectorAll(".sec-title, .list li, .numbers div, .big-cta, .mail, .links, .aside").forEach((el) => el.classList.add("rise"));
+let pending = [...document.querySelectorAll(".rise, [data-count]")];
 
-// ---------- Reveal on scroll ----------
-// A position check rather than IntersectionObserver: anything whose top has
-// passed 82% of the viewport is revealed, including blocks scrolled past quickly.
-let pending = [...document.querySelectorAll(".printer, [data-scan], [data-anim]")];
-function reveal(el) {
-  el.classList.add("in");
-  if (el === printer) startPrint();
-  if (el.matches("[data-scan]")) setTimeout(() => scan(el), 450);
-  el.querySelectorAll("[data-count]").forEach(countUp);
-}
-function check() {
-  const limit = window.innerHeight * 0.82;
+// ---------- Timeline ----------
+const timeline = document.getElementById("timeline");
+const tItems = timeline ? [...timeline.children] : [];
+
+// ---------- One scroll loop ----------
+function frame() {
+  const vh = window.innerHeight;
+
+  if (words.length) {
+    const r = wordsEl.getBoundingClientRect();
+    const p = REDUCED ? 1 : clamp((vh * 0.85 - r.top) / (r.height + vh * 0.25));
+    const lit = Math.round(p * words.length);
+    words.forEach((w, i) => w.classList.toggle("lit", i < lit));
+  }
+
+  if (pinned && hs) {
+    const r = hs.getBoundingClientRect();
+    const p = clamp(-r.top / (hs.offsetHeight - vh));
+    track.style.transform = `translate3d(${-(track.scrollWidth - window.innerWidth) * p}px,0,0)`;
+    setRailProgress(p);
+  }
+
   pending = pending.filter((el) => {
-    if (el.getBoundingClientRect().top < limit) { reveal(el); return false; }
+    if (el.getBoundingClientRect().top < vh * 0.88) {
+      el.classList.add("in");
+      if (el.dataset.count) countUp(el);
+      return false;
+    }
     return true;
   });
-  if (!pending.length) {
-    window.removeEventListener("scroll", onScroll);
-    window.removeEventListener("resize", onScroll);
+
+  if (timeline) {
+    const r = timeline.getBoundingClientRect();
+    const p = REDUCED ? 1 : clamp((vh * 0.6 - r.top) / r.height);
+    timeline.style.setProperty("--p", p.toFixed(3));
+    tItems.forEach((li) => li.classList.toggle("on", li.getBoundingClientRect().top < vh * 0.6 || REDUCED));
   }
 }
 let queued = false;
 function onScroll() {
   if (queued) return;
   queued = true;
-  requestAnimationFrame(() => { queued = false; check(); });
+  requestAnimationFrame(() => { queued = false; frame(); });
 }
 window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", onScroll);
-check();
+window.addEventListener("resize", () => { layoutRail(); onScroll(); });
+WIDE.addEventListener?.("change", () => { layoutRail(); onScroll(); });
+document.fonts?.ready.then(() => { layoutRail(); frame(); });
+layoutRail();
+frame();
 
-// ---------- Algiers clock ----------
+// ---------- Clock & year ----------
 const clock = document.getElementById("clock");
 if (clock) {
   const tf = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit", timeZone: "Africa/Algiers" });
-  const update = () => { clock.textContent = tf.format(new Date()); };
-  update();
-  setInterval(update, 15000);
+  const tickClock = () => { clock.textContent = tf.format(new Date()); };
+  tickClock();
+  setInterval(tickClock, 15000);
 }
-
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();

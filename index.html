@@ -3,288 +3,209 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fayçal Gheroufella — Développeur PHP / Flutter</title>
-<meta name="description" content="Développeur PHP / Flutter en Algérie : applications métier, terminaux Honeywell, impression TSPL, ERP. Master en audit et comptabilité.">
+<meta name="color-scheme" content="dark">
+<title>Fayçal Gheroufella — Développeur PHP &amp; Flutter</title>
+<meta name="description" content="Développeur PHP et Flutter en Algérie : applications métier, terminaux Honeywell, impression thermique, ERP. Master en audit et comptabilité.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wdth,wght@75..112.5,300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="bar">
-  <a class="logo" href="#top" aria-label="Haut de page">FG<span>/</span></a>
+<div class="curtain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#top">Fayçal&nbsp;G.</a>
   <nav>
-    <a href="#etiquettes">Projets</a>
-    <a href="#entrepot">ERP</a>
-    <a href="#grand-livre">Finance</a>
-    <a href="#mouvements">Parcours</a>
+    <a href="#projets">Projets</a>
+    <a href="#parcours">Parcours</a>
     <a href="#contact">Contact</a>
   </nav>
-  <p class="status"><i class="led"></i><span>Alger <b id="clock">--:--</b></span></p>
+  <a class="nav-cv" href="cv/CV_Faycal_Gheroufella_FR.pdf">CV ↓</a>
 </header>
 
 <main id="top">
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <p class="eyebrow">Développeur PHP / Flutter — Algérie</p>
-    <h1>
-      <span class="line"><span>Du terminal</span></span>
-      <span class="line"><span>du coursier</span></span>
-      <span class="line"><span>au bureau de</span></span>
-      <span class="line"><span class="hl">la direction.</span></span>
-    </h1>
-    <p class="lede">Je construis les applications métier de SINAL, distributeur de verres optiques : web en PHP/MySQL, Android et Windows en Flutter, et tout ce qui touche au matériel — terminaux Honeywell, imprimantes thermiques, pointeuses ZKTeco.</p>
-    <div class="hero-cta">
-      <a class="btn" href="#etiquettes">Voir les projets</a>
-      <a class="btn ghost" href="cv/CV_Faycal_Gheroufella_FR.pdf">CV en PDF</a>
+  <div class="hero-meta">
+    <span><i class="dot"></i>Ouvert à un poste de développeur</span>
+    <span>Algérie · <b id="clock">--:--</b></span>
+  </div>
+  <h1 class="name" aria-label="Fayçal Gheroufella">
+    <span class="row r1" data-split>Fayçal</span>
+    <span class="row r2" data-split>Gheroufella</span>
+  </h1>
+  <div class="hero-foot">
+    <p class="role">Développeur <em>PHP</em> &amp; <em>Flutter</em> — applications métier, terminaux de terrain, ERP.</p>
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs><path id="circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+        <text><textPath href="#circle">PHP · FLUTTER · MYSQL · HONEYWELL · TSPL · N8N · </textPath></text>
+      </svg>
+      <span class="badge-arrow">↓</span>
     </div>
   </div>
+</section>
 
-  <div class="printer" aria-hidden="true">
-    <div class="printer-head">
-      <span class="model">XP-H500B · 203 dpi</span>
-      <span class="printer-led"></span>
+<!-- MANIFESTO: words light up while scrolling -->
+<section class="manifesto" id="intro">
+  <p class="kicker">( À propos )</p>
+  <p class="words" data-words>Je développe les outils qui font tourner une entreprise : l'encaissement des coursiers, l'étiquetage des produits, le stock, les tableaux de bord de la direction. Depuis mai 2024 chez SINAL, j'ai livré plus de quinze applications, du web en PHP aux applications Android et Windows en Flutter. Avant le code, j'ai fait un master en audit et comptabilité — je sais ce qu'un chiffre doit dire avant d'écrire la requête qui le produit.</p>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>PHP 8</span><span>Flutter</span><span>MySQL</span><span>Riverpod</span><span>BLoC</span><span>SDK Honeywell</span><span>TSPL</span><span>n8n</span><span>Google Gemini</span><span>HFSQL / ODBC</span><span>ZKTeco</span><span>JWT</span><span>WinDev Mobile</span>
+    <span>PHP 8</span><span>Flutter</span><span>MySQL</span><span>Riverpod</span><span>BLoC</span><span>SDK Honeywell</span><span>TSPL</span><span>n8n</span><span>Google Gemini</span><span>HFSQL / ODBC</span><span>ZKTeco</span><span>JWT</span><span>WinDev Mobile</span>
+  </div>
+</div>
+
+<!-- HORIZONTAL PROJECTS -->
+<section class="hscroll" id="projets">
+  <div class="pin">
+    <div class="hs-head">
+      <h2>Projets choisis</h2>
+      <p class="hs-count"><b id="hs-index">01</b> / 04</p>
     </div>
-    <div class="slot">
-      <div class="paper" id="paper">
-        <div class="ticket">
-          <p class="t-small">EXPÉDITEUR</p>
-          <p class="t-name">FAYÇAL GHEROUFELLA</p>
-          <p class="t-role">DÉVELOPPEUR PHP · FLUTTER</p>
-          <div class="t-grid">
-            <div><span>DEPUIS</span>05/2024</div>
-            <div><span>APPS</span>15+</div>
-            <div><span>LIEU</span>ALGÉRIE</div>
+    <div class="track">
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">01</p>
+          <h3>SinalGo</h3>
+          <p class="card-lead">L'application du coursier au moment de la livraison : il scanne le bon avec le lecteur Honeywell, l'application vérifie qu'il n'est pas déjà réglé, puis enregistre le paiement, la signature du client et la position GPS.</p>
+          <ul class="tags"><li>Flutter</li><li>WinDev Mobile</li><li>PHP</li><li>SDK Honeywell</li></ul>
+          <dl class="stats"><div><dt>Lignes Dart</dt><dd>~5 400</dd></div><div><dt>Plateforme</dt><dd>Android</dd></div></dl>
+          <a class="card-link" href="https://github.com/faysal12369/sinalgo">Voir la fiche ↗</a>
+        </div>
+        <div class="card-visual">
+          <div class="phone">
+            <div class="phone-screen">
+              <p class="ph-title">Encaissement</p>
+              <div class="ph-scan"><span class="ph-bars"></span><i class="ph-laser"></i></div>
+              <ol class="ph-steps">
+                <li>Scan du bon de livraison</li>
+                <li>Bon vérifié — non réglé</li>
+                <li>Signature du client</li>
+                <li>Position GPS enregistrée</li>
+                <li>Encaissé</li>
+              </ol>
+            </div>
           </div>
-          <svg class="t-barcode" data-code="FAYCAL-GHEROUFELLA" viewBox="0 0 300 60" preserveAspectRatio="none"></svg>
-          <p class="t-code">FAYCAL-GHEROUFELLA</p>
-          <p class="t-fragile">FRAGILE — contient un master en audit</p>
         </div>
-      </div>
+      </article>
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">02</p>
+          <h3>Étiquettes TSPL</h3>
+          <p class="card-lead">Une application Windows qui dessine l'étiquette en image 1-bit à 203 dpi, la traduit en commandes TSPL et l'envoie directement au spouleur via <code>winspool.dll</code>, appelé depuis Dart. Marquage CE, IMEI et numéro de série en Code128.</p>
+          <ul class="tags"><li>Flutter Desktop</li><li>dart:ffi</li><li>TSPL</li><li>Code128</li></ul>
+          <dl class="stats"><div><dt>Format</dt><dd>60 × 40 mm</dd></div><div><dt>Résolution</dt><dd>480 × 320 pts</dd></div></dl>
+          <a class="card-link" href="https://github.com/faysal12369/xprinter-label-printing">Voir la fiche ↗</a>
+        </div>
+        <div class="card-visual">
+          <div class="feed">
+            <div class="feed-slot"></div>
+            <div class="feed-label">
+              <div class="fl-top"><b>CE</b><span>MARQUE <strong>DEMO</strong><br>MODÈLE <strong>X1-PRO</strong></span></div>
+              <svg class="bc" data-code="356938035643809" viewBox="0 0 300 40" preserveAspectRatio="none"></svg>
+              <p>IMEI 356938035643809</p>
+              <svg class="bc" data-code="XP24A0193" viewBox="0 0 300 40" preserveAspectRatio="none"></svg>
+              <p>S/N XP24A0193</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">03</p>
+          <h3>ERP en Flutter Web</h3>
+          <p class="card-lead">Le front-end de l'ERP de l'entreprise : 22 modules, des appels d'offres au drive partagé. Étiquettes et QR codes d'emplacement pour le stock, et l'architecture d'un assistant IA — n8n et Google Gemini, limité aux droits de l'utilisateur.</p>
+          <ul class="tags"><li>Flutter Web</li><li>Riverpod</li><li>go_router</li><li>dio</li></ul>
+          <dl class="stats"><div><dt>Lignes</dt><dd>~75 800</dd></div><div><dt>Tests</dt><dd>28 fichiers</dd></div></dl>
+          <a class="card-link" href="https://github.com/faysal12369/sinal-erp-flutter">Voir la fiche ↗</a>
+        </div>
+        <div class="card-visual">
+          <div class="modules" id="modules"></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">04</p>
+          <h3>TB Sinal</h3>
+          <p class="card-lead">Le tableau de bord de la direction : ventes, encaissements et créances par commercial, agence, client et famille de produits. Le projet où la formation en finance compte le plus — une créance n'est pas un encaissement.</p>
+          <ul class="tags"><li>Flutter BLoC</li><li>PHP</li><li>MySQL</li><li>Google Maps</li></ul>
+          <dl class="stats"><div><dt>API</dt><dd>79 actions</dd></div><div><dt>Base</dt><dd>~40 tables</dd></div></dl>
+          <a class="card-link" href="https://github.com/faysal12369/tb-sinal-dashboard">Voir la fiche ↗</a>
+        </div>
+        <div class="card-visual">
+          <ul class="kpis">
+            <li><span>Ventes par commercial</span><i></i></li>
+            <li><span>Ventes par agence</span><i></i></li>
+            <li><span>Top clients</span><i></i></li>
+            <li><span>Créances</span><i></i></li>
+            <li><span>Clients inactifs</span><i></i></li>
+            <li><span>Ventes par famille</span><i></i></li>
+          </ul>
+        </div>
+      </article>
+
     </div>
+    <div class="hs-progress"><span id="hs-bar"></span></div>
   </div>
 </section>
 
-<!-- PROJECTS AS LABELS -->
-<section class="block" id="etiquettes">
-  <div class="block-head">
-    <p class="num">01</p>
-    <h2>Étiquettes</h2>
-    <p class="sub">Quatre projets, scannés à l'arrivée.</p>
-  </div>
-
-  <div class="labels">
-
-    <article class="label" data-scan>
-      <header class="label-top">
-        <span class="ref">REF. SG-01</span>
-        <span class="year">2025 – 2026</span>
-      </header>
-      <h3>SinalGo</h3>
-      <p class="what">Encaissement des coursiers sur terminal Honeywell</p>
-      <div class="barcode-wrap">
-        <svg class="barcode" data-code="SINALGO" viewBox="0 0 300 54" preserveAspectRatio="none"></svg>
-        <i class="laser"></i>
-        <span class="stamp">Scanné</span>
-      </div>
-      <dl class="label-meta">
-        <div><dt>Plateforme</dt><dd>Android</dd></div>
-        <div><dt>Poids</dt><dd>~5 400 lignes</dd></div>
-        <div><dt>Contenu</dt><dd>Flutter · PHP · SDK Honeywell</dd></div>
-      </dl>
-      <div class="reveal"><div>
-        <p>Le coursier scanne le bon de livraison avec le lecteur intégré du terminal. L'application vérifie qu'il n'est pas déjà réglé, puis enregistre le paiement, la signature du client tracée à l'écran et la position GPS. Écrite d'abord en WinDev Mobile, réécrite en Flutter avec repli sur la caméra.</p>
-        <a href="https://github.com/faysal12369/sinalgo">Fiche GitHub ↗</a>
-      </div></div>
-    </article>
-
-    <article class="label" data-scan>
-      <header class="label-top">
-        <span class="ref">REF. LB-02</span>
-        <span class="year">2026</span>
-      </header>
-      <h3>Étiquettes TSPL</h3>
-      <p class="what">CE, IMEI et numéro de série sur imprimante thermique</p>
-      <div class="barcode-wrap">
-        <svg class="barcode" data-code="356938035643809" viewBox="0 0 300 54" preserveAspectRatio="none"></svg>
-        <i class="laser"></i>
-        <span class="stamp">Scanné</span>
-      </div>
-      <dl class="label-meta">
-        <div><dt>Plateforme</dt><dd>Windows</dd></div>
-        <div><dt>Format</dt><dd>60 × 40 mm</dd></div>
-        <div><dt>Contenu</dt><dd>Flutter · dart:ffi · TSPL</dd></div>
-      </dl>
-      <div class="reveal"><div>
-        <p>L'application dessine l'étiquette elle-même en image 1-bit de 480 × 320 points, l'emballe dans des commandes TSPL et l'écrit directement dans le spouleur Windows, via <code>winspool.dll</code> appelé depuis Dart. Une seconde application imprime des séries de codes-barres depuis une plage ou un fichier Excel.</p>
-        <a href="https://github.com/faysal12369/xprinter-label-printing">Fiche GitHub ↗</a>
-      </div></div>
-    </article>
-
-    <article class="label" data-scan>
-      <header class="label-top">
-        <span class="ref">REF. ERP-03</span>
-        <span class="year">2026</span>
-      </header>
-      <h3>ERP en Flutter Web</h3>
-      <p class="what">22 modules, du suivi des appels d'offres au drive</p>
-      <div class="barcode-wrap">
-        <svg class="barcode" data-code="SINAL-ERP-WEB" viewBox="0 0 300 54" preserveAspectRatio="none"></svg>
-        <i class="laser"></i>
-        <span class="stamp">Scanné</span>
-      </div>
-      <dl class="label-meta">
-        <div><dt>Plateforme</dt><dd>Web</dd></div>
-        <div><dt>Poids</dt><dd>~75 800 lignes</dd></div>
-        <div><dt>Contenu</dt><dd>Riverpod · go_router · dio</dd></div>
-      </dl>
-      <div class="reveal"><div>
-        <p>Le front-end de l'ERP de l'entreprise : étiquettes Code128 et QR codes d'emplacement pour le stock, et l'architecture d'un assistant — passerelle PHP, JWT, workflow n8n et agent Google Gemini limité aux droits de l'utilisateur, avec confirmation avant toute écriture.</p>
-        <a href="https://github.com/faysal12369/sinal-erp-flutter">Fiche GitHub ↗</a>
-      </div></div>
-    </article>
-
-    <article class="label" data-scan>
-      <header class="label-top">
-        <span class="ref">REF. TB-04</span>
-        <span class="year">2024 – 2026</span>
-      </header>
-      <h3>TB Sinal</h3>
-      <p class="what">Ventes, encaissements et créances pour la direction</p>
-      <div class="barcode-wrap">
-        <svg class="barcode" data-code="TB-SINAL" viewBox="0 0 300 54" preserveAspectRatio="none"></svg>
-        <i class="laser"></i>
-        <span class="stamp">Scanné</span>
-      </div>
-      <dl class="label-meta">
-        <div><dt>Plateforme</dt><dd>Android</dd></div>
-        <div><dt>API</dt><dd>79 actions</dd></div>
-        <div><dt>Contenu</dt><dd>Flutter BLoC · PHP · MySQL</dd></div>
-      </dl>
-      <div class="reveal"><div>
-        <p>Les chiffres par commercial, agence, client et famille de produits, avec les créances et les retards de paiement. Le projet où la formation compte le plus : une créance, un encaissement et un chiffre d'affaires ne se calculent pas de la même façon.</p>
-        <a href="https://github.com/faysal12369/tb-sinal-dashboard">Fiche GitHub ↗</a>
-      </div></div>
-    </article>
-
-  </div>
+<!-- NUMBERS -->
+<section class="numbers">
+  <div><b data-count="15" data-suffix="+">0</b><span>applications livrées</span></div>
+  <div><b data-count="3">0</b><span>plateformes : Android, Windows, Web</span></div>
+  <div><b data-count="79">0</b><span>actions dans l'API de TB Sinal</span></div>
+  <div><b data-count="22">0</b><span>modules dans l'ERP Flutter Web</span></div>
 </section>
 
-<!-- SINALGO TRACE -->
-<section class="block trace-block">
-  <div class="block-head">
-    <p class="num">02</p>
-    <h2>Un encaissement, pas à pas</h2>
-    <p class="sub">Les vraies actions de l'API SinalGo, dans l'ordre.</p>
-  </div>
-  <ol class="trace" data-anim>
-    <li style="--i:0"><code>scan</code><span class="tbar"></span><em>Lecteur Honeywell, ou caméra en repli</em></li>
-    <li style="--i:1"><code>Get_bn</code><span class="tbar"></span><em>Le bon existe-t-il ? Est-il déjà payé ?</em></li>
-    <li style="--i:2"><code>add_reglcours</code><span class="tbar"></span><em>Règlement, signature, coordonnées GPS</em></li>
-    <li style="--i:3"><code>dashboard_mobile</code><span class="tbar"></span><em>Récapitulatif du coursier</em></li>
-    <li style="--i:4"><code>dashboard_global</code><span class="tbar"></span><em>Vue administrateur</em></li>
-    <li style="--i:5"><code>historique</code><span class="tbar"></span><em>Encaissements passés</em></li>
+<!-- OTHER WORK -->
+<section class="more">
+  <h2 class="sec-title">Aussi construit</h2>
+  <ul class="list">
+    <li><span class="l-name">SCMC</span><span class="l-desc">Suivi des marchés publics : lots, cautions, non-conformités</span><span class="l-tech">PHP · JWT</span></li>
+    <li><span class="l-name">Automatisations n8n</span><span class="l-desc">Agent Gemini qui lit les factures PDF, impression automatique des congés</span><span class="l-tech">n8n · Gemini</span></li>
+    <li><span class="l-name">Codes-barres en série</span><span class="l-desc">Plage de codes ou import Excel, aperçu PDF</span><span class="l-tech">Flutter Desktop</span></li>
+    <li><span class="l-name">Inventaire mobile</span><span class="l-desc">Comptage et validation du stock</span><span class="l-tech">Flutter</span></li>
+    <li><span class="l-name">Calculateur de fret</span><span class="l-desc">Frais d'importation répartis sur chaque article</span><span class="l-tech">Flutter · Excel</span></li>
+    <li><span class="l-name">Pointage ZKTeco</span><span class="l-desc">Notification à chaque pointage, temps par projet</span><span class="l-tech">Flutter</span></li>
+    <li><a class="l-name" href="https://github.com/faysal12369/sinal_event">Sinal Event ↗</a><span class="l-desc">Inscriptions aux salons, check-in par QR, signature</span><span class="l-tech">Flutter</span></li>
+    <li><a class="l-name" href="https://github.com/faysal12369/cv-maker">CV Maker ↗</a><span class="l-desc">12 modèles, export PDF — projet personnel, code ouvert</span><span class="l-tech">Flutter</span></li>
+    <li><span class="l-name">Réclamations</span><span class="l-desc">Expertise des verres, actions correctives, exports</span><span class="l-tech">PHP</span></li>
+    <li><span class="l-name">Sinal-E Pro</span><span class="l-desc">Commande de verres en ligne pour les opticiens</span><span class="l-tech">PHP · JWT</span></li>
+    <li><span class="l-name">Ordres de mission</span><span class="l-desc">Version web et application Windows</span><span class="l-tech">PHP · Flutter</span></li>
+    <li><span class="l-name">Système RH</span><span class="l-desc">Dossiers employés, cartes professionnelles</span><span class="l-tech">PHP</span></li>
+  </ul>
+  <p class="aside">En équipe : contributions aux deux ERP web de l'entreprise, à SINAL Cartes (cartes de remise avec QR codes révocables) et à la nouvelle version des réclamations.</p>
+</section>
+
+<!-- TIMELINE -->
+<section class="journey" id="parcours">
+  <h2 class="sec-title">Parcours</h2>
+  <ol class="timeline" id="timeline">
+    <li><span class="t-when">2024 — aujourd'hui</span><div><h3>Développeur d'applications, SINAL</h3><p>Intitulé : technicien en maintenance et développement informatique. Applications métier, intégration du matériel, support des utilisateurs.</p></div></li>
+    <li><span class="t-when">2026</span><div><h3>Certifications</h3><p>Flutter &amp; Dart (IBM) · Agents intelligents avec DeepSeek et n8n (Board Infinity)</p></div></li>
+    <li><span class="t-when">2021 — 2023</span><div><h3>Master 2, Audit et Comptabilité</h3></div></li>
+    <li><span class="t-when">2018 — 2021</span><div><h3>Licence, Finance et Comptabilité</h3></div></li>
   </ol>
-</section>
-
-<!-- WAREHOUSE / ERP -->
-<section class="block" id="entrepot">
-  <div class="block-head">
-    <p class="num">03</p>
-    <h2>Entrepôt</h2>
-    <p class="sub">L'ERP en Flutter Web, rangé par emplacement.</p>
-  </div>
-  <div class="counters" data-anim>
-    <div><b data-count="22">0</b><span>modules</span></div>
-    <div><b data-count="29">0</b><span>routes</span></div>
-    <div><b data-count="163">0</b><span>fichiers Dart</span></div>
-    <div><b data-count="75800">0</b><span>lignes</span></div>
-    <div><b data-count="28">0</b><span>fichiers de tests</span></div>
-  </div>
-  <div class="bins" data-anim></div>
-</section>
-
-<!-- LEDGER -->
-<section class="block" id="grand-livre">
-  <div class="block-head">
-    <p class="num">04</p>
-    <h2>Grand livre</h2>
-    <p class="sub">Master en audit et comptabilité, avant le code.</p>
-  </div>
-  <div class="ledger-wrap">
-    <div class="ledger-text">
-      <p class="big">Un encaissement de coursier, c'est aussi une écriture&nbsp;: la caisse augmente, la créance client diminue.</p>
-      <p>Je construis les écrans en sachant ça. Qui a validé, quand, et est-ce que les totaux se rapprochent&nbsp;: c'est ce qu'un contrôleur vérifiera, alors c'est ce que je trace — droits par action, historique, exports pour la comptabilité.</p>
-    </div>
-    <figure class="ledger" data-anim aria-label="Exemple d'écriture comptable équilibrée">
-      <figcaption>Exemple — encaissement d'un règlement client en espèces</figcaption>
-      <div class="t-account">
-        <div class="col">
-          <p class="col-head">Débit</p>
-          <p class="entry" style="--i:0"><span>53 Caisse</span><b>12 500,00</b></p>
-        </div>
-        <div class="col">
-          <p class="col-head">Crédit</p>
-          <p class="entry" style="--i:1"><span>411 Clients</span><b>12 500,00</b></p>
-        </div>
-      </div>
-      <p class="balance"><span>Écart</span><b>0,00</b><i>Équilibré</i></p>
-    </figure>
-  </div>
-</section>
-
-<!-- INVENTORY -->
-<section class="block" id="inventaire">
-  <div class="block-head">
-    <p class="num">05</p>
-    <h2>Aussi en stock</h2>
-    <p class="sub">D'autres applications livrées.</p>
-  </div>
-  <div class="stock" data-anim>
-    <div class="row head"><span>Réf.</span><span>Application</span><span>Technologies</span><span>Année</span></div>
-    <div class="row" style="--i:0"><span>SC-05</span><span><b>SCMC</b> — suivi des marchés publics : lots, cautions, non-conformités</span><span>PHP · JWT</span><span>2026</span></div>
-    <div class="row" style="--i:1"><span>N8-06</span><span><b>Automatisations n8n</b> — agent Gemini qui lit les factures PDF, impression des congés</span><span>n8n · Gemini</span><span>2026</span></div>
-    <div class="row" style="--i:2"><span>IV-07</span><span><b>Inventaire mobile</b> — comptage et validation du stock</span><span>Flutter</span><span>2026</span></div>
-    <div class="row" style="--i:3"><span>FR-08</span><span><b>Calculateur de fret</b> — frais d'import répartis par article</span><span>Flutter · Excel</span><span>2026</span></div>
-    <div class="row" style="--i:4"><span>ZK-09</span><span><b>Pointage ZKTeco</b> — notification à chaque pointage</span><span>Flutter</span><span>2026</span></div>
-    <div class="row" style="--i:5"><span>CV-10</span><span><b><a href="https://github.com/faysal12369/cv-maker">CV Maker</a></b> — 12 modèles, export PDF, code ouvert</span><span>Flutter</span><span>2026</span></div>
-    <div class="row" style="--i:6"><span>EV-11</span><span><b><a href="https://github.com/faysal12369/sinal_event">Sinal Event</a></b> — salons, check-in par QR, signature</span><span>Flutter</span><span>2025</span></div>
-    <div class="row" style="--i:7"><span>RC-12</span><span><b>Réclamations</b> — expertise des verres, actions correctives</span><span>PHP</span><span>2025</span></div>
-    <div class="row" style="--i:8"><span>EP-13</span><span><b>Sinal-E Pro</b> — commande de verres en ligne pour opticiens</span><span>PHP · JWT</span><span>2025</span></div>
-    <div class="row" style="--i:9"><span>OM-14</span><span><b>Ordres de mission</b> — web et application Windows</span><span>PHP · Flutter</span><span>2025</span></div>
-    <div class="row" style="--i:10"><span>IT-15</span><span><b>IT TaskFlow</b> — parc informatique, consommables, journal d'audit</span><span>PHP</span><span>2025</span></div>
-    <div class="row" style="--i:11"><span>RH-16</span><span><b>Système RH</b> — dossiers employés, cartes professionnelles</span><span>PHP</span><span>2024</span></div>
-  </div>
-  <p class="note">En équipe : contributions aux deux ERP web de l'entreprise, à SINAL Cartes (cartes de remise avec QR codes révocables) et à la nouvelle version des réclamations. Maintenance des anciens logiciels WinDev / HFSQL et migration de leurs données vers le web.</p>
-</section>
-
-<!-- MOVEMENTS -->
-<section class="block" id="mouvements">
-  <div class="block-head">
-    <p class="num">06</p>
-    <h2>Journal des mouvements</h2>
-    <p class="sub">Le parcours, comme un historique de stock.</p>
-  </div>
-  <ol class="moves" data-anim>
-    <li style="--i:0"><span class="date">2026</span><span class="type up">Mise à jour</span><span class="desc">Certifications Coursera — Flutter &amp; Dart (IBM), agents intelligents avec n8n (Board Infinity)</span></li>
-    <li style="--i:1"><span class="date">05/2024</span><span class="type out">Affectation</span><span class="desc"><b>SINAL</b> — développeur d'applications <small>(intitulé : technicien maintenance et développement informatique)</small></span></li>
-    <li style="--i:2"><span class="date">2023</span><span class="type in">Entrée</span><span class="desc">Master 2 — Audit et Comptabilité</span></li>
-    <li style="--i:3"><span class="date">2021</span><span class="type in">Entrée</span><span class="desc">Licence — Finance et Comptabilité</span></li>
-  </ol>
-  <p class="note">Langues : arabe, français (DELF B2), anglais.</p>
+  <p class="aside">Arabe · Français (DELF B2) · Anglais</p>
 </section>
 
 <!-- CONTACT -->
-<section class="block contact" id="contact">
-  <div class="block-head">
-    <p class="num">07</p>
-    <h2>Destinataire&nbsp;: vous</h2>
-    <p class="sub">Je cherche un poste de développeur backend PHP, Flutter ou ERP.</p>
-  </div>
-  <a class="mail" href="mailto:gheroufellafaycal@gmail.com">gheroufellafaycal@gmail.com</a>
+<section class="contact" id="contact">
+  <p class="kicker">( Contact )</p>
+  <h2 class="big-cta">Un poste de<br>développeur&nbsp;?</h2>
+  <a class="mail" href="mailto:gheroufellafaycal@gmail.com"><span>gheroufellafaycal@gmail.com</span></a>
   <div class="links">
     <a href="cv/CV_Faycal_Gheroufella_FR.pdf">CV français</a>
     <a href="cv/CV_Faycal_Gheroufella_EN.pdf">CV English</a>
@@ -297,7 +218,7 @@
 
 <footer class="foot">
   <span>© <span id="year">2026</span> Fayçal Gheroufella</span>
-  <span>Imprimé à 203 dpi</span>
+  <a href="#top">Haut de page ↑</a>
 </footer>
 
 <script src="app.js"></script>
