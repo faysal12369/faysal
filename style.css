@@ -301,6 +301,20 @@ code { font-family: var(--mono); font-size: .85em; }
 .kpis li:nth-child(5) i { width: 28%; animation-delay: .6s; background: var(--muted); } .kpis li:nth-child(6) i { width: 73%; animation-delay: .75s; }
 @keyframes grow { 0% { transform: scaleX(0); } 35%, 85% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
 
+/* ---------- Screenshots ---------- */
+.shots { padding: 14vh var(--gutter) 0; }
+.shots .sec-title { margin-bottom: 18px; }
+.shots-note { margin: 0 0 36px; max-width: 70ch; font: 400 13px/1.6 var(--mono); color: var(--muted); }
+.shots-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 32px); }
+.shot-fig { margin: 0; }
+.shot-fig.wide { grid-column: 1 / -1; }
+.shot-fig a { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--bg2); }
+.shot-fig img { display: block; width: 100%; height: auto; transition: transform .6s var(--ease); }
+.shot-fig a:hover img { transform: scale(1.02); }
+.shot-fig figcaption { margin-top: 12px; color: var(--muted); font-size: 14.5px; }
+.shot-fig figcaption b { color: var(--text); font-weight: 600; }
+@media (max-width: 900px) { .shots-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Numbers ---------- */
 .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 16vh var(--gutter); gap: 24px; }
 .numbers div { border-top: 1px solid var(--line); padding-top: 18px; }

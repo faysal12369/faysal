@@ -115,7 +115,7 @@ function countUp(el) {
 }
 
 // ---------- Generic reveal ----------
-document.querySelectorAll(".sec-title, .list li, .numbers div, .big-cta, .mail, .links, .aside").forEach((el) => el.classList.add("rise"));
+document.querySelectorAll(".sec-title, .list li, .numbers div, .big-cta, .mail, .links, .aside, .shot-fig").forEach((el) => el.classList.add("rise"));
 let pending = [...document.querySelectorAll(".rise, [data-count]")];
 
 // ---------- Timeline ----------
