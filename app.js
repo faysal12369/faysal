@@ -6,6 +6,28 @@ const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const WIDE = window.matchMedia("(min-width: 901px)");
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
+// ---------- Language ----------
+// The page's own <html lang> picks the strings: "/" is French, "/en/" English.
+const LANG = document.documentElement.lang.startsWith("en") ? "en" : "fr";
+const T = {
+  fr: {
+    locale: "fr-FR",
+    modules: ["Projets", "Appels d'offres", "Lots de prix", "Achats", "Commandes", "Clients", "Fournisseurs", "Stock", "Équipements", "Services", "Interventions", "Réunions", "Revues", "Drive", "Messagerie", "Notifications", "Déclarations", "Journal", "Rapports", "Utilisateurs", "Paramètres", "Assistant"],
+    formMissing: "Merci de remplir les trois champs (avec un email valide).",
+    formSending: "Envoi en cours…",
+    formOk: "Merci, votre message est bien parti. Je vous réponds rapidement.",
+    formErr: "L'envoi n'a pas abouti. Écrivez-moi directement à gheroufellafaycal@gmail.com.",
+  },
+  en: {
+    locale: "en-GB",
+    modules: ["Projects", "Tenders", "Price lots", "Purchasing", "Orders", "Customers", "Suppliers", "Stock", "Equipment", "Services", "Field jobs", "Meetings", "Reviews", "Drive", "Messaging", "Notifications", "Declarations", "Audit log", "Reports", "Users", "Settings", "Assistant"],
+    formMissing: "Please fill in all three fields (with a valid email).",
+    formSending: "Sending…",
+    formOk: "Thank you, your message has been sent. I'll get back to you soon.",
+    formErr: "The message could not be sent. Please email me directly at gheroufellafaycal@gmail.com.",
+  },
+}[LANG];
+
 // ---------- Code128-B (real, scannable barcodes) ----------
 const CODE128 = (
   "212222 222122 222221 121223 121322 131222 122213 122312 132212 221213 " +
@@ -58,9 +80,8 @@ if (wordsEl) {
 }
 
 // ---------- ERP modules ----------
-const MODULES = ["Projets", "Appels d'offres", "Lots de prix", "Achats", "Commandes", "Clients", "Fournisseurs", "Stock", "Équipements", "Services", "Interventions", "Réunions", "Revues", "Drive", "Messagerie", "Notifications", "Déclarations", "Journal", "Rapports", "Utilisateurs", "Paramètres", "Assistant"];
 const modules = document.getElementById("modules");
-if (modules) modules.innerHTML = MODULES.map((m, i) => `<span class="mod" style="--i:${i}">${m}</span>`).join("");
+if (modules) modules.innerHTML = T.modules.map((m, i) => `<span class="mod" style="--i:${i}">${m}</span>`).join("");
 
 // ---------- Horizontal rail ----------
 const hs = document.querySelector(".hscroll");
@@ -101,7 +122,7 @@ track?.addEventListener("scroll", () => {
 }, { passive: true });
 
 // ---------- Counters ----------
-const fmt = new Intl.NumberFormat("fr-FR");
+const fmt = new Intl.NumberFormat(T.locale);
 function countUp(el) {
   const target = +el.dataset.count, suffix = el.dataset.suffix || "";
   if (REDUCED) { el.textContent = fmt.format(target) + suffix; return; }
@@ -181,10 +202,10 @@ if (form) {
     e.preventDefault();
     const fields = [...form.querySelectorAll("input[required], textarea[required]")];
     fields.forEach((f) => f.classList.toggle("bad", !f.value.trim() || (f.type === "email" && !f.checkValidity())));
-    if (form.querySelector(".bad")) { setStatus("Merci de remplir les trois champs (avec un email valide).", "err"); return; }
+    if (form.querySelector(".bad")) { setStatus(T.formMissing, "err"); return; }
     if (form._honey.value) return; // filled only by bots
     button.disabled = true;
-    setStatus("Envoi en cours…");
+    setStatus(T.formSending);
     try {
       const res = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
         method: "POST",
@@ -194,9 +215,9 @@ if (form) {
       const data = await res.json().catch(() => ({}));
       if (!res.ok || String(data.success) === "false") throw new Error(data.message || res.statusText);
       form.reset();
-      setStatus("Merci, votre message est bien parti. Je vous réponds rapidement.", "ok");
+      setStatus(T.formOk, "ok");
     } catch (err) {
-      setStatus("L'envoi n'a pas abouti. Écrivez-moi directement à gheroufellafaycal@gmail.com.", "err");
+      setStatus(T.formErr, "err");
     } finally {
       button.disabled = false;
     }
@@ -206,7 +227,7 @@ if (form) {
 // ---------- Clock & year ----------
 const clock = document.getElementById("clock");
 if (clock) {
-  const tf = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit", timeZone: "Africa/Algiers" });
+  const tf = new Intl.DateTimeFormat(T.locale, { hour: "2-digit", minute: "2-digit", timeZone: "Africa/Algiers" });
   const tickClock = () => { clock.textContent = tf.format(new Date()); };
   tickClock();
   setInterval(tickClock, 15000);
