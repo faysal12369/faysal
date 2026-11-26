@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -93,7 +93,21 @@
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">01 <span class="team">Projet d'équipe · contributeur principal</span></p>
+          <p class="card-num">01 <span class="team open">Code ouvert</span></p>
+          <h3>Déploiement</h3>
+          <p class="card-lead">Une application Windows qui met à jour un site PHP + MySQL sur n'importe quel serveur : seuls les fichiers modifiés partent, les migrations de la base s'appliquent une fois, et chaque déploiement commence par une simulation puis une sauvegarde. Pas besoin de SSH.</p>
+          <ul class="tags"><li>Flutter Desktop</li><li>PHP</li><li>MySQL</li><li>FTP / SFTP</li><li>DPAPI</li></ul>
+          <dl class="stats"><div><dt>Transports</dt><dd>6</dd></div><div><dt>Langues</dt><dd>FR · EN</dd></div></dl>
+          <p class="card-foot"><a class="card-link card-dl" href="https://github.com/faysal12369/deploiement/releases/latest">Télécharger (Windows) ↓</a><a class="card-link" href="video/deploiement-fr.mp4" data-video>Vidéo de 90 s ▶</a><a class="card-link" href="https://github.com/faysal12369/deploiement">Voir le code ↗</a><span>Code ouvert · tests, changelog, licence</span></p>
+        </div>
+        <div class="card-visual">
+          <img class="shot" src="img/deploiement.png" width="1440" height="900" decoding="async" alt="Fenêtre de Déploiement : simulation avant envoi, avec 3 fichiers, 1 migration et 2 lignes à synchroniser">
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">02 <span class="team">Projet d'équipe · contributeur principal</span></p>
           <h3>ERP DS</h3>
           <p class="card-lead">L'ERP des marchés publics, des achats et de la logistique : appels d'offres, soumissions, lots, contrats et cautions, études du bureau d'études, commandes, conteneurs, livraisons et paiements partiels — avec le stock et un drive documentaire.</p>
           <ul class="tags"><li>PHP 8</li><li>MariaDB</li><li>Docker</li><li>n8n</li><li>OCR Tesseract</li></ul>
@@ -110,7 +124,7 @@
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">02 <span class="team">Projet d'équipe · contributeur principal</span></p>
+          <p class="card-num">03 <span class="team">Projet d'équipe · contributeur principal</span></p>
           <h3>ERP DG</h3>
           <p class="card-lead">L'ERP des Moyens Généraux : demandes d'achat validées jusqu'au PDG, bons de commande, stock avec carte 3D des emplacements, trésorerie, patrimoine, missions, parc auto, RH, GED versionnée, qualité et tickets IT. Les anciennes bases HFSQL y sont importées.</p>
           <ul class="tags"><li>PHP</li><li>MySQL</li><li>n8n</li><li>ODBC / HFSQL</li><li>Chart.js</li></ul>
@@ -125,20 +139,6 @@
             <li><b>PDG</b><span>Validé</span></li>
             <li><b>Bon de commande</b><span>Émis</span></li>
           </ol>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-text">
-          <p class="card-num">03 <span class="team open">Code ouvert</span></p>
-          <h3>Déploiement</h3>
-          <p class="card-lead">Une application Windows qui met à jour un site PHP + MySQL sur n'importe quel serveur : seuls les fichiers modifiés partent, les migrations de la base s'appliquent une fois, et chaque déploiement commence par une simulation puis une sauvegarde. Pas besoin de SSH.</p>
-          <ul class="tags"><li>Flutter Desktop</li><li>PHP</li><li>MySQL</li><li>FTP / SFTP</li><li>DPAPI</li></ul>
-          <dl class="stats"><div><dt>Transports</dt><dd>6</dd></div><div><dt>Langues</dt><dd>FR · EN</dd></div></dl>
-          <p class="card-foot"><a class="card-link" href="https://github.com/faysal12369/deploiement">Voir le code ↗</a><span>Tests, changelog, licence</span></p>
-        </div>
-        <div class="card-visual">
-          <img class="shot" src="img/deploiement.png" width="1440" height="900" decoding="async" alt="Fenêtre de Déploiement : simulation avant envoi, avec 3 fichiers, 1 migration et 2 lignes à synchroniser">
         </div>
       </article>
 
@@ -237,6 +237,9 @@
   <p class="shots-note">Captures prises sur une copie de démonstration des applications, remplie de données fictives : aucune donnée de l'entreprise n'y apparaît.</p>
   <div class="shots-grid">
     <figure class="shot-fig wide"><a href="img/shots/ds-stock-3d.jpg" target="_blank" rel="noopener"><img src="img/shots/ds-stock-3d.jpg" width="1600" height="708" loading="lazy" alt="ERP DS : carte 3D du stock avec étagères, armoires, zone de réception et équipements colorés par conteneur"></a><figcaption><b>ERP DS</b> · Carte 3D du stock : étagères, armoires et équipements colorés selon leur conteneur</figcaption></figure>
+    <figure class="shot-fig"><a href="img/shots/dep-confirmation.png" target="_blank" rel="noopener"><img src="img/shots/dep-confirmation.png" width="1440" height="900" loading="lazy" alt="Déploiement : fenêtre de confirmation avant l'envoi, avec les fichiers, la structure et les données table par table"></a><figcaption><b>Déploiement</b> · La confirmation avant l'envoi : fichiers, migrations et données, table par table</figcaption></figure>
+    <figure class="shot-fig"><a href="img/shots/dep-resultat.png" target="_blank" rel="noopener"><img src="img/shots/dep-resultat.png" width="1440" height="900" loading="lazy" alt="Déploiement : résultat d'un déploiement, avec les fichiers écrits, la migration exécutée et les lignes synchronisées"></a><figcaption><b>Déploiement</b> · Le résultat : fichiers écrits, migration exécutée, lignes synchronisées, sauvegarde faite avant</figcaption></figure>
+    <figure class="shot-fig"><a href="img/shots/dep-theme-sombre.png" target="_blank" rel="noopener"><img src="img/shots/dep-theme-sombre.png" width="1440" height="900" loading="lazy" alt="Déploiement : simulation en thème sombre, 3 fichiers, 1 migration et 2 lignes à envoyer"></a><figcaption><b>Déploiement</b> · La simulation, en thème sombre : on voit tout ce qui partirait, sans rien modifier sur le serveur</figcaption></figure>
     <figure class="shot-fig"><a href="img/shots/dg-workflow.jpg" target="_blank" rel="noopener"><img src="img/shots/dg-workflow.jpg" width="1600" height="1111" loading="lazy" alt="ERP DG : workflow des demandes d'achat, de la validation à la réception"></a><figcaption><b>ERP DG</b> · Workflow des demandes d'achat, de la validation à la réception</figcaption></figure>
     <figure class="shot-fig"><a href="img/shots/ds-tableau-de-bord.jpg" target="_blank" rel="noopener"><img src="img/shots/ds-tableau-de-bord.jpg" width="1600" height="1111" loading="lazy" alt="ERP DS : tableau de bord des marchés"></a><figcaption><b>ERP DS</b> · Tableau de bord des marchés : cahiers des charges, soumissions, chiffre d'affaires</figcaption></figure>
     <figure class="shot-fig"><a href="img/shots/dg-tableau-de-bord.jpg" target="_blank" rel="noopener"><img src="img/shots/dg-tableau-de-bord.jpg" width="1600" height="1111" loading="lazy" alt="ERP DG : tableau de bord avec trésorerie, stock et santé des modules"></a><figcaption><b>ERP DG</b> · Tableau de bord : trésorerie, stock, validations, santé des modules</figcaption></figure>
@@ -306,6 +309,7 @@
       <input type="hidden" name="_subject" value="Portfolio — nouveau message">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://faysal12369.github.io/faysal/?envoye=1#contact">
       <button type="submit">Envoyer le message</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -325,6 +329,8 @@
   <span>© <span id="year">2026</span> Fayçal Gheroufella</span>
   <nav><a href="en/" hreflang="en" lang="en">English version</a><a href="#top">Haut de page ↑</a></nav>
 </footer>
+
+<dialog class="video-dlg" id="video-dlg"><button type="button" class="dlg-close" aria-label="Fermer la vidéo">×</button><video controls preload="none" playsinline></video></dialog>
 
 <script src="app.js"></script>
 </body>

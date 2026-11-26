@@ -17,6 +17,7 @@ const T = {
     formSending: "Envoi en cours…",
     formOk: "Merci, votre message est bien parti. Je vous réponds rapidement.",
     formErr: "L'envoi n'a pas abouti. Écrivez-moi directement à gheroufellafaycal@gmail.com.",
+    formRetry: "Envoi par une autre voie…",
   },
   en: {
     locale: "en-GB",
@@ -25,6 +26,7 @@ const T = {
     formSending: "Sending…",
     formOk: "Thank you, your message has been sent. I'll get back to you soon.",
     formErr: "The message could not be sent. Please email me directly at gheroufellafaycal@gmail.com.",
+    formRetry: "Sending another way…",
   },
 }[LANG];
 
@@ -192,12 +194,18 @@ frame();
 
 // ---------- Contact form ----------
 // Sent through FormSubmit (no backend on GitHub Pages). Without JavaScript the
-// form still posts to FormSubmit's normal endpoint.
+// form still posts to FormSubmit's normal endpoint, which sends the visitor
+// back here (hidden "_next" field) with ?envoye=1 or ?sent=1.
 const form = document.getElementById("contact-form");
 if (form) {
   const status = document.getElementById("form-status");
   const button = form.querySelector("button");
   const setStatus = (text, kind) => { status.textContent = text; status.className = "form-status" + (kind ? " " + kind : ""); };
+  const back = new URLSearchParams(location.search);
+  if (back.has("envoye") || back.has("sent")) {
+    setStatus(T.formOk, "ok");
+    history.replaceState(null, "", location.pathname + "#contact");
+  }
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const fields = [...form.querySelectorAll("input[required], textarea[required]")];
@@ -213,15 +221,38 @@ if (form) {
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok || String(data.success) === "false") throw new Error(data.message || res.statusText);
+      if (!res.ok || String(data.success) === "false") {
+        // FormSubmit answered but refused: show its reason (in English).
+        setStatus(T.formErr + (data.message ? " (" + data.message + ")" : ""), "err");
+        button.disabled = false;
+        return;
+      }
       form.reset();
       setStatus(T.formOk, "ok");
-    } catch (err) {
-      setStatus(T.formErr, "err");
-    } finally {
       button.disabled = false;
+    } catch (err) {
+      // The request never reached FormSubmit (blocked by an ad blocker, a
+      // firewall or the network): post the form the normal way instead.
+      setStatus(T.formRetry);
+      HTMLFormElement.prototype.submit.call(form);
     }
   });
+}
+
+// ---------- Video dialog ----------
+// The link points at the .mp4 itself, so without JavaScript it still plays.
+const dlg = document.getElementById("video-dlg");
+if (dlg && dlg.showModal) {
+  const video = dlg.querySelector("video");
+  document.querySelectorAll("a[data-video]").forEach((a) => a.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (video.getAttribute("src") !== a.getAttribute("href")) video.src = a.getAttribute("href");
+    dlg.showModal();
+    video.play().catch(() => {});
+  }));
+  dlg.querySelector(".dlg-close").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener("close", () => video.pause());
 }
 
 // ---------- Clock & year ----------

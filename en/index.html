@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -93,7 +93,21 @@
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">01 <span class="team">Team project · main contributor</span></p>
+          <p class="card-num">01 <span class="team open">Open source</span></p>
+          <h3>Déploiement</h3>
+          <p class="card-lead">A Windows app that updates a PHP + MySQL site on any server: only changed files are sent, database migrations run exactly once, and every deployment starts with a dry run, then a backup. No SSH needed.</p>
+          <ul class="tags"><li>Flutter Desktop</li><li>PHP</li><li>MySQL</li><li>FTP / SFTP</li><li>DPAPI</li></ul>
+          <dl class="stats"><div><dt>Transports</dt><dd>6</dd></div><div><dt>Languages</dt><dd>FR · EN</dd></div></dl>
+          <p class="card-foot"><a class="card-link card-dl" href="https://github.com/faysal12369/deploiement/releases/latest">Download (Windows) ↓</a><a class="card-link" href="../video/deploiement-en.mp4" data-video>90-second video ▶</a><a class="card-link" href="https://github.com/faysal12369/deploiement">View the code ↗</a><span>Open source · tests, changelog, license</span></p>
+        </div>
+        <div class="card-visual">
+          <img class="shot" src="../img/deploiement.png" width="1440" height="900" decoding="async" alt="Déploiement window: dry run before upload, with 3 files, 1 migration and 2 rows to sync">
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-text">
+          <p class="card-num">02 <span class="team">Team project · main contributor</span></p>
           <h3>ERP DS</h3>
           <p class="card-lead">The ERP for public tenders, purchasing and logistics: calls for tenders, bids, lots, contracts and bank guarantees, engineering studies, purchase orders, containers, deliveries and partial payments — plus stock and a document drive.</p>
           <ul class="tags"><li>PHP 8</li><li>MariaDB</li><li>Docker</li><li>n8n</li><li>Tesseract OCR</li></ul>
@@ -110,7 +124,7 @@
 
       <article class="card">
         <div class="card-text">
-          <p class="card-num">02 <span class="team">Team project · main contributor</span></p>
+          <p class="card-num">03 <span class="team">Team project · main contributor</span></p>
           <h3>ERP DG</h3>
           <p class="card-lead">The ERP for General Services: purchase requests approved all the way up to the CEO, purchase orders, stock with a 3D map of storage locations, treasury, assets, business trips, vehicle fleet, HR, versioned document management, quality and IT tickets. Legacy HFSQL databases are imported into it.</p>
           <ul class="tags"><li>PHP</li><li>MySQL</li><li>n8n</li><li>ODBC / HFSQL</li><li>Chart.js</li></ul>
@@ -125,20 +139,6 @@
             <li><b>CEO</b><span>Approved</span></li>
             <li><b>Purchase order</b><span>Issued</span></li>
           </ol>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-text">
-          <p class="card-num">03 <span class="team open">Open source</span></p>
-          <h3>Déploiement</h3>
-          <p class="card-lead">A Windows app that updates a PHP + MySQL site on any server: only changed files are sent, database migrations run exactly once, and every deployment starts with a dry run, then a backup. No SSH needed.</p>
-          <ul class="tags"><li>Flutter Desktop</li><li>PHP</li><li>MySQL</li><li>FTP / SFTP</li><li>DPAPI</li></ul>
-          <dl class="stats"><div><dt>Transports</dt><dd>6</dd></div><div><dt>Languages</dt><dd>FR · EN</dd></div></dl>
-          <p class="card-foot"><a class="card-link" href="https://github.com/faysal12369/deploiement">View the code ↗</a><span>Tests, changelog, license</span></p>
-        </div>
-        <div class="card-visual">
-          <img class="shot" src="../img/deploiement.png" width="1440" height="900" decoding="async" alt="Déploiement window: dry run before upload, with 3 files, 1 migration and 2 rows to sync">
         </div>
       </article>
 
@@ -234,9 +234,12 @@
 <!-- SCREENSHOTS (demo copies filled with fictitious data) -->
 <section class="shots" id="screenshots">
   <h2 class="sec-title">Screenshots</h2>
-  <p class="shots-note">Taken on a demo copy of the applications, filled with fictitious data: no company data appears in them. The interfaces are in French, as used at work.</p>
+  <p class="shots-note">Taken on a demo copy of the applications, filled with fictitious data: no company data appears in them. The ERP screens are in French, as used at work.</p>
   <div class="shots-grid">
     <figure class="shot-fig wide"><a href="../img/shots/ds-stock-3d.jpg" target="_blank" rel="noopener"><img src="../img/shots/ds-stock-3d.jpg" width="1600" height="708" loading="lazy" alt="ERP DS: 3D stock map with shelves, cabinets, a receiving area and equipment coloured by container"></a><figcaption><b>ERP DS</b> · 3D stock map: shelves, cabinets and equipment coloured by container</figcaption></figure>
+    <figure class="shot-fig"><a href="../img/shots/dep-confirmation.png" target="_blank" rel="noopener"><img src="../img/shots/dep-confirmation.png" width="1440" height="900" loading="lazy" alt="Déploiement: confirmation window before sending, with files, structure and data table by table"></a><figcaption><b>Déploiement</b> · The confirmation before sending: files, migrations and data, table by table</figcaption></figure>
+    <figure class="shot-fig"><a href="../img/shots/dep-resultat.png" target="_blank" rel="noopener"><img src="../img/shots/dep-resultat.png" width="1440" height="900" loading="lazy" alt="Déploiement: result of a deployment, with files written, the migration run and rows synced"></a><figcaption><b>Déploiement</b> · The result: files written, migration run, rows synced, backup taken first</figcaption></figure>
+    <figure class="shot-fig"><a href="../img/shots/dep-theme-sombre.png" target="_blank" rel="noopener"><img src="../img/shots/dep-theme-sombre.png" width="1440" height="900" loading="lazy" alt="Déploiement: dry run in the dark theme, 3 files, 1 migration and 2 rows to send"></a><figcaption><b>Déploiement</b> · The dry run, in the dark theme: everything that would be sent, with nothing changed on the server</figcaption></figure>
     <figure class="shot-fig"><a href="../img/shots/dg-workflow.jpg" target="_blank" rel="noopener"><img src="../img/shots/dg-workflow.jpg" width="1600" height="1111" loading="lazy" alt="ERP DG: purchase request workflow, from approval to receipt"></a><figcaption><b>ERP DG</b> · Purchase request workflow, from approval to receipt</figcaption></figure>
     <figure class="shot-fig"><a href="../img/shots/ds-tableau-de-bord.jpg" target="_blank" rel="noopener"><img src="../img/shots/ds-tableau-de-bord.jpg" width="1600" height="1111" loading="lazy" alt="ERP DS: tenders dashboard"></a><figcaption><b>ERP DS</b> · Tenders dashboard: specifications, bids, revenue</figcaption></figure>
     <figure class="shot-fig"><a href="../img/shots/dg-tableau-de-bord.jpg" target="_blank" rel="noopener"><img src="../img/shots/dg-tableau-de-bord.jpg" width="1600" height="1111" loading="lazy" alt="ERP DG: dashboard with treasury, stock and module health"></a><figcaption><b>ERP DG</b> · Dashboard: treasury, stock, approvals, module health</figcaption></figure>
@@ -306,6 +309,7 @@
       <input type="hidden" name="_subject" value="Portfolio (EN) — new message">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://faysal12369.github.io/faysal/en/?sent=1#contact">
       <button type="submit">Send message</button>
       <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -325,6 +329,8 @@
   <span>© <span id="year">2026</span> Fayçal Gheroufella</span>
   <nav><a href="../" hreflang="fr" lang="fr">Version française</a><a href="#top">Back to top ↑</a></nav>
 </footer>
+
+<dialog class="video-dlg" id="video-dlg"><button type="button" class="dlg-close" aria-label="Close the video">×</button><video controls preload="none" playsinline></video></dialog>
 
 <script src="../app.js"></script>
 </body>
